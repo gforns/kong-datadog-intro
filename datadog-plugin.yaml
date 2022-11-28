@@ -1,0 +1,13 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongClusterPlugin
+metadata:
+  name: plugin-datadog
+  annotations:
+    kubernetes.io/ingress.class: kong
+  labels:
+    global: "true"
+config: 
+  host: datadog
+  port: 8125
+  prefix: kongmyplugin
+plugin: datadog
