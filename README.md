@@ -3,6 +3,19 @@
 We can use Datadog to monitor Kong in a Kubernetes environment.
 These tests are done using Minikube and everything is deploied in `default` namespace.
 
+## Datadog Account preparation:
+
+1. Create an account in Datadog. In this example, I will be using European site of Datadog: 
+- https://datadoghq.eu
+
+2. Create an `apiKey` on your account and save the key:
+- https://app.datadoghq.eu/personal-settings/application-keys
+
+3. Export the apiKey as a environmenet variable:
+```
+export DD_API_KEY=12345678901234567890
+```
+
 
 ## Install Kong
 
@@ -15,20 +28,6 @@ helm repo update
 Install Kong using latest Kong 2.8 helm chart: (--versioni v2.12.0)
 ```
 helm install kong kong/kong --version v2.12.0
-```
-
-
-## Datadog Account preparation:
-
-1. Create an account in Datadog. In this example, I will be using European site of Datadog: 
-- https://datadoghq.eu
-
-2. Create an `apiKey` on your account and save the key:
-- https://app.datadoghq.eu/personal-settings/application-keys
-
-3. Export the apiKey as a environmenet variable:
-```
-export DD_API_KEY=12345678901234567890
 ```
 
 
@@ -50,7 +49,7 @@ datadog/datadog
 ```
 
 
-## Collent All K8s logs in Datadog:
+## Collect all K8s logs in Datadog:
 
 Datadog can monitor all logs from the k8s cluster using the Autodiscovery.
 
@@ -116,7 +115,6 @@ kubectl apply -f prometheus-plugin.yaml
 ```
 
 
-
 In the `kong-values.yaml` file add:
 
 ```
@@ -124,9 +122,6 @@ podAnnotations:
   ad.datadoghq.com/proxy.check_names: '["kong"]'
   ad.datadoghq.com/proxy.init_configs: '[{}]'
   ad.datadoghq.com/proxy.instances: '[{"openmetrics_endpoint": "http://%%host%%:8100/metrics"}]'
-  # These anotations are for the logs
-  ad.datadoghq.com/proxy.logs: '[{"source": "kong", "service": "kong-proxy"}]'
-  ad.datadoghq.com/ingress-controller.logs: '[{"source": "kong", "service": "kong-ingress-controller"}]'
 ```
 
 
@@ -143,7 +138,6 @@ kubectl apply -f httpbin-deployment-service.yaml
 ```
 
 send request to the Ingress and you should see data in the Kong default dashboards.
-
 
 
 
