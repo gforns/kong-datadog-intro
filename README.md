@@ -58,7 +58,7 @@ We need to set to `true` the `datadog.logs.enabled` and  `datadog.logs.container
 And if we are using `minikube` we need to disable `datadog.kubelet.tlsVerify`:
 
 ```
-helm upgrade datadog  \
+helm upgrade -i datadog  \
 --set datadog.site=datadoghq.eu \
 --set datadog.apiKey=$DD_API_KEY \
 --set datadog.logs.enabled=true \
@@ -75,7 +75,7 @@ Apply above configuration but keeping `datadog.logs.containerCollectAll`to `fals
 
 
 ```
-helm upgrade datadog  \
+helm upgrade -i datadog  \
 --set datadog.site=datadoghq.eu \
 --set datadog.apiKey=$DD_API_KEY \
 --set datadog.logs.enabled=true \
