@@ -30,6 +30,12 @@ Install Kong using latest Kong 2.8 helm chart: (--versioni v2.12.0)
 helm install kong kong/kong --version v2.12.0
 ```
 
+And let's create a Deployment / Service / Ingress
+
+```
+kubectl apply -f httpbin-deployment-service.yaml
+```
+
 
 ## Install Datadog Agent using helm chart
 
@@ -141,7 +147,7 @@ send request to the Ingress and you should see data in the Kong default dashboar
 
 
 
-## Get metrics in Datadog using OpenMetrics (Prometheus)
+## Get metrics in Datadog using Kong Plugin
 
 If Kubernetes Autodiscovery is not enabled or working, Kong can directly send some metrics to Datadog Agent using the plugin:
 
