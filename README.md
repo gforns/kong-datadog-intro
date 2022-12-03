@@ -106,6 +106,9 @@ Apply the changes to Kong:
 helm upgrade kong -f kong-values.yaml --version=v2.12.0 kong/kong
 ```
 
+More information in:
+- https://docs.datadoghq.com/integrations/kong/?tab=containerized#log-collection
+
 
 ## Get metrics in Datadog using OpenMetrics (Prometheus)
 
@@ -145,6 +148,8 @@ kubectl apply -f httpbin-deployment-service.yaml
 
 send request to the Ingress and you should see data in the Kong default dashboards.
 
+More information in:
+- https://docs.datadoghq.com/integrations/kong/?tab=containerized#
 
 
 ## Get metrics in Datadog using Kong Plugin
@@ -157,4 +162,5 @@ kubectl apply -f datadog-plugin.yaml
 
 In the config of the plugin there is `prefix: kongmyplugin`, so in Datadog you should see some new metrics starting with `kongmyplugin.*`
 
-
+More information in:
+- https://docs.konghq.com/hub/kong-inc/datadog/
