@@ -25,7 +25,7 @@ helm repo add kong https://charts.konghq.com
 helm repo update
 ```
 
-Install Kong using latest Kong 2.8 helm chart: (--versioni v2.12.0)
+Install Kong using latest Kong 2.8 (helm chart --version v2.12.0)
 ```
 helm install kong kong/kong --version v2.12.0
 ```
@@ -36,23 +36,6 @@ And let's create a Deployment / Service / Ingress
 kubectl apply -f httpbin-deployment-service.yaml
 ```
 
-
-## Install Datadog Agent using helm chart
-
-
-Add Datadog helm repo:
-```
-helm repo add datadog https://helm.datadoghq.com
-helm repo update
-```
-
-Install Datadog Agent we need to specify the `datadog.site` and `datadog.apiKey`:
-```
-helm install datadog \
---set datadog.site=datadoghq.eu \
---set datadog.apiKey=$DD_API_KEY \
-datadog/datadog
-```
 
 
 ## Collect all K8s logs in Datadog:
