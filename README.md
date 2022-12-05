@@ -9,7 +9,7 @@ These tests are done using Minikube and everything is deploied in `default` name
 - https://datadoghq.eu
 
 2. Create an `apiKey` on your account and save the key:
-- https://app.datadoghq.eu/personal-settings/application-keys
+- https://docs.datadoghq.com/account_management/org_settings/
 
 3. Export the apiKey as a environmenet variable:
 ```
